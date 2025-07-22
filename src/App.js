@@ -33,7 +33,7 @@ function App() {
         type: "USER_INPUT",
         payload: data,
       },
-      "https://admin.shopify.com"
+      "*"
     );
   };
 
