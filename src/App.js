@@ -52,6 +52,21 @@ function App() {
     setMessages((prev) => [...prev, { sender: 'user', text: `Resubmitted: ${lastIdea}` }]);
   };
 
+
+  useEffect(() => {
+  const handleMessage = (event) => {
+    console.log("event.origin",event.origin)
+    // if (event.origin !== "https://admin.shopify.com/") return; // security check
+
+    if (event.data?.type === "INITIAL_DATA") {
+      console.log("Received message:", event.data.payload);
+    }
+  };
+
+  window.addEventListener("message", handleMessage);
+  return () => window.removeEventListener("message", handleMessage);
+}, []);
+
   return (
     <div className="chat-box">
       <h2>🧵 T-shirt Customizer</h2>
