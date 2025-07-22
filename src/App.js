@@ -27,6 +27,7 @@ function App() {
   }, []);
 
   const sendToParent = (data) => {
+    console.log("Sending data to parent:", data);
     window.parent.postMessage(
       {
         type: "USER_INPUT",
